@@ -14,12 +14,10 @@ void main() {
     phase2.level5();
 
     Phase3 phase3 = new Phase3();
-<<<<<<< HEAD
     phase3.level1();
     phase3.level2();
     phase3.level3();
     phase3.level4();
 }
-=======
-}
->>>>>>> ad7ac2693f58ffac270316ac51009e868573c147
+
+

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Phase3 {
@@ -360,18 +362,38 @@ public class Phase3 {
     public void level4(){
 
         System.out.println("1. Reverse string.");
-        System.out.println(level4Q1(sc.next(), sc.nextInt()));
+        System.out.println(level4Q1(sc.next(), 0));
 
-//
-//        2. Palindrome string.
-//        3. Count vowels.
-//        4. Remove spaces.
-//        5. Replace characters.
-//        6. Remove character occurrences.
-//        7. Print characters one by one.
-//        8. Print reverse order.
-//        9. Convert to uppercase.
-//        10. Count consonants and vowels.
+        System.out.println("2. Palindrome string.");
+        System.out.println(level4Q2(sc.next()));
+
+        System.out.println("3. Count vowels.");
+        System.out.println(level4Q3(sc.next(),0));
+        sc.nextLine();
+        System.out.println("4. Remove spaces.");
+        System.out.println(level4Q4(sc.nextLine(),0));
+
+        System.out.println("5. Replace characters.");
+        System.out.println(level4Q5(sc.nextLine(),0, sc.next().charAt(0),sc.next().charAt(0)));
+
+        System.out.println("6. Remove character occurrences.");
+        System.out.println(level4Q6(sc.nextLine(),0, sc.next().charAt(0)));
+
+        sc.nextLine();
+        System.out.println(" 7. Print characters one by one.");
+        level4Q7(sc.nextLine(),0);
+
+        System.out.println(" 8. Print reverse order.");
+        level4Q8(sc.nextLine(),0);
+
+        System.out.println("9. Convert to uppercase.");
+        level4Q9(sc.nextLine(),0);
+
+        System.out.println("10. Count consonants and vowels.");
+        String str = sc.nextLine();
+        System.out.println("Vowels : "+level4Q3( str,0));
+        System.out.println("Consonants : "+level4Q10( str,0));
+
     }
 
     public String level4Q1(String str, int i){
@@ -387,4 +409,90 @@ public class Phase3 {
 
         return level4Q1(new String(arr),i+1);
     }
+
+    public boolean level4Q2(String str){
+        return Objects.equals(str, level4Q1(str, 0));
+    }
+
+    public int level4Q3(String str, int i){
+        int len = str.length();
+        if(i >= len)
+            return 0;
+
+        char ch = Character.toLowerCase(str.charAt(i));
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+            return 1 + level4Q3(str, i + 1);
+
+        return level4Q3(str, i + 1);
+    }
+
+    public String level4Q4(String str, int i){
+        int len = str.length();
+        if (i >= len)
+            return "";
+        if(str.charAt(i) == ' ')
+            return level4Q4(str, i+1);
+
+        return str.charAt(i) + level4Q4(str, i+1);
+    }
+
+    public String level4Q5(String str, int i, char find, char replace){
+        int len = str.length();
+        if(i >= len)
+            return str;
+        char[] arr = str.toCharArray();
+
+        if(arr[i] == find)
+            arr[i] = replace;
+
+        return level4Q5(new String(arr),i+1, find, replace);
+    }
+
+    public String level4Q6(String str, int i, char ch){
+        int len = str.length();
+        if(i >= len)
+            return "";
+
+        if(str.charAt(i) == ch)
+            return level4Q6(str, i+1, ch);
+
+        return str.charAt(i) + level4Q6(str, i+1, ch);
+    }
+
+    public void level4Q7(String str, int i){
+        int len = str.length();
+        if(i >= len)
+            return;
+        System.out.print(str.charAt(i));
+        level4Q7(str, i+1);
+    }
+
+    public void level4Q8(String str, int i){
+        int len = str.length();
+        if(i >= len)
+            return;
+        level4Q8(str, i+1);
+        System.out.print(str.charAt(i));
+    }
+
+    public void level4Q9(String str, int i){
+        int len = str.length();
+        if(i >= len)
+            return;
+        System.out.print(Character.toUpperCase(str.charAt(i)));
+        level4Q9(str, i+1);
+    }
+
+    public int level4Q10(String str, int i){
+        int len = str.length();
+        if(i >= len)
+            return 0;
+        char ch = Character.toLowerCase(str.charAt(i));
+        if(Character.isLetter(ch))
+            if(ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u')
+                return 1 + level4Q10(str, i + 1);
+
+        return level4Q10(str, i+1);
+    }
+
 }

@@ -18,6 +18,11 @@ void main() {
     phase3.level2();
     phase3.level3();
     phase3.level4();
+
+    Phase4 phase4 = new Phase4();
+    phase4.level1();
+    phase4.level2();
+    phase4.level3();
 }
 
 

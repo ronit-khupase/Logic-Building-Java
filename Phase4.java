@@ -304,4 +304,281 @@ public class Phase4 {
         System.out.println("Copied Array: "+Arrays.toString(copy));
     }
 
+    public void level4(){
+
+        System.out.println("Enter number of elements:");
+        int n = sc.nextInt();
+        int[] arr1 = new int[n];
+        int[] arr2 = new int[n];
+
+        System.out.println("Enter Array 1");
+        for (int i = 0; i < n; i++)
+            arr1[i] = sc.nextInt();
+        System.out.println("Enter Array 2");
+        for (int i = 0; i < n; i++)
+            arr2[i] = sc.nextInt();
+
+        System.out.println("1. Compare arrays (same order).");
+        boolean same = true;
+        for(int i = 0; i < n; i++)
+            if (arr1[i] != arr2[i]) {
+                same = false;
+                break;
+            }
+
+        if(same)
+            System.out.println("Arrays are same.");
+        else
+            System.out.println("Arrays are not same.");
+
+
+        System.out.println("2. Compare arrays (ignore order).");
+        same = true;
+        boolean[] visited = new boolean[n];
+
+        for(int i = 0; i < n; i++){
+            boolean found = false;
+
+            for(int j = 0; j < n; j++)
+                if(arr1[i] == arr2[j] && !visited[j]){
+                    found = true;
+                    visited[j] = true;
+                    break;
+                }
+            if(!found){
+                same = false;
+                break;
+            }
+        }
+        if(same)
+            System.out.println("Arrays are same");
+        else
+            System.out.println("Arrays are not same");
+
+
+        System.out.println("3. Merge 2 arrays into third array.");
+        int[] arr = new int[n+n];
+        for(int i = 0; i < n; i++){
+            arr[i] = arr1[i];
+        }
+        for(int i = 0; i < n; i++){
+            arr[n+i] = arr2[i];
+        }
+        System.out.println("Merged Array: "+Arrays.toString(arr));
+
+        System.out.println("4. Common elements are : ");
+        boolean[] visit = new boolean[n];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                if(arr1[i] == arr2[j] && !visit[j]){
+                    visit[j] = true;
+                    System.out.print(arr1[i]+" ");
+                }
+            }
+
+        }
+
+
+        System.out.println("5. Elements present in first but not second.");
+
+        for(int i = 0; i < n; i++){
+            boolean common = false;
+            for(int j = 0; j < n; j++){
+                if(arr1[i] == arr2[j]){
+                    common = true;
+                    break;
+                }
+            }
+            if(!common)
+                System.out.println(arr1[i]+" ");
+        }
+
+
+        System.out.println("6. Count common elements.");
+        boolean[] visit1 = new boolean[n];
+        int cnt = 0;
+        for (int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                if(arr1[i] == arr2[j] && !visit1[i]){
+                    cnt++;
+                    break;
+                }
+            }
+        }
+        System.out.println(" Number of Common Elements: "+ cnt);
+
+        System.out.println("7. Element-wise sum (A[i] + B[i]).");
+        int sum;
+        for(int i = 0; i < n; i++){
+            sum = arr1[i] + arr2[i];
+            System.out.println(sum+" ");
+        }
+
+        System.out.println("8. Element-wise product (A[i] * B[i]).");
+        int prod = 1;
+        for(int i = 0; i < n; i++){
+            prod = arr1[i] * arr2[i];
+            System.out.println(prod+" ");
+        }
+
+
+        System.out.println("9. Frequency array for each number.");
+        System.out.println("Enter Array");
+        int[] array = new int[n];
+        for (int i =0; i < n; i++)
+            array[i] = sc.nextInt();
+
+        int[] freq = new int[n];
+
+        boolean[] visit2 = new boolean[n];
+        for(int i = 0; i < n; i++){
+            if(visit2[i])
+                continue;
+
+            int c = 1;
+            for(int j = i+1; j < n; j++){
+                if(array[i] == array[j] && !visit2[j]){
+                    c++;
+                    visit2[j] = true;
+                }
+            }
+            visit2[i] = true;
+            freq[i] = c;
+        }
+
+        System.out.println("Frequency Array : "+ Arrays.toString(freq));
+
+
+        System.out.println("10. Print duplicates.");
+        boolean[] visit3 = new boolean[n];
+        for (int i = 0; i < n; i++){
+            if(visit3[i])
+                continue;
+            for(int j = i+1; j < n; j++){
+                if(array[i] == array[j] && !visit3[j]){
+                    visit3[j] = true;
+                    System.out.println(array[i]+" ");
+                    break;
+                }
+            }
+        }
+    }
+
+    public void level5(){
+
+        System.out.println("Enter Number of Elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
+        System.out.println("1. Check ascending order.");
+        boolean asc = true;
+        for (int i = 0; i < n-1; i++) {
+            if(arr[i] > arr[i+1]){
+                asc = false;
+                break;
+            }
+        }
+        if(asc)
+            System.out.println("Array is in Ascending Order");
+        else
+            System.out.println("Array is not in Ascending Order");
+
+
+        System.out.println("2. Check descending order.");
+        boolean desc = true;
+        for (int i = 0; i < n-1; i++) {
+            if(arr[i] < arr[i+1]){
+                desc = false;
+                break;
+            }
+        }
+        if(desc)
+            System.out.println("Array is in Descending Order");
+        else
+            System.out.println("Array is not in Descending Order");
+
+
+        System.out.println(" 3. Second largest element.");
+        int lar = arr[0];
+        int secLar = Integer.MIN_VALUE;;
+
+        for(int i = 1; i < n; i++){
+            if(lar < arr[i]){
+                secLar = lar;
+                lar = arr[i];
+            } else if (secLar < arr[i] && arr[i] != lar) {
+                secLar = arr[i];
+            }
+        }
+        System.out.println("Second Largest : "+ secLar);
+
+        System.out.println("4. Second smallest element.");
+        int small = Integer.MAX_VALUE;
+        int secSmall = Integer.MAX_VALUE;
+
+        for(int i = 0; i < n; i++){
+            if(small > arr[i]){
+                secSmall = small;
+                small = arr[i];
+            } else if (secSmall > arr[i] && arr[i] != small) {
+                secSmall = arr[i];
+            }
+        }
+        System.out.println("Second Smallest : "+ secSmall);
+
+
+        System.out.println(" 5. Difference between max and min.");
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        int sum = 0;
+
+        for(int i = 0; i < n; i++){
+            if(arr[i] < min)
+                min = arr[i];
+            if(arr[i] > max)
+                max = arr[i];
+            sum += arr[i];
+        }
+        System.out.println("Difference between max and min is : "+ (max-min));
+
+        System.out.println("6. Sum excluding largest and smallest.");
+        System.out.println("Sum is : " + (sum-(max+min)));
+
+
+        System.out.println("7. Count pairs with sum = k.");
+        int cnt = 0;
+        System.out.println("Enter Sum K : ");
+        int sumK = sc.nextInt();
+
+        for (int i = 0; i < n-1; i++){
+            for(int j = i+1; j < n; j++){
+                if(arr[i]+arr[j] == sumK){
+                    cnt++;
+                }
+            }
+        }
+        System.out.println("Total Pairs are : "+cnt);
+
+
+        System.out.println("8. Count elements greater than average.");
+        double avg = (double)sum/n;
+        cnt = 0;
+        for(int i = 0; i < n; i++){
+            if(arr[i] > avg)
+                cnt++;
+        }
+        System.out.println("Count of Elements Greater than Average is : "+cnt);
+
+
+
+
+//        9. Frequency of distinct elements.
+//        10. Print unique elements.
+    }
+
+
 }

@@ -574,11 +574,40 @@ public class Phase4 {
         System.out.println("Count of Elements Greater than Average is : "+cnt);
 
 
+        System.out.println("9. Frequency of distinct elements.");
+        boolean[] visit = new boolean[n];
+        for(int i = 0; i < n; i++){
+            if (visit[i])
+                continue;
+            int count = 1;
+            for(int j = i+1; j < n; j++){
+                if(arr[i] == arr[j]){
+                    count++;
+                    visit[j] = true;
+                }
+            }
+            System.out.println(arr[i]+" -> "+ count);
+        }
 
 
-//        9. Frequency of distinct elements.
-//        10. Print unique elements.
+        System.out.println("10. Print unique elements.");
+
+        boolean[] visit1 = new boolean[n];
+        for(int i = 0; i < n; i++){
+            if(visit1[i])
+                continue;
+
+            boolean uni = true;
+
+            for (int j = i+1; j < n; j++){
+                if(arr[i] == arr[j]){
+                    visit1[j] = true;
+                    uni = false;
+                }
+            }
+            if(uni)
+                System.out.print(arr[i]+" ");
+        }
     }
-
 
 }

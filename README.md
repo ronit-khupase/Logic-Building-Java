@@ -92,11 +92,11 @@ This repository serves as:
 
 ## Progress
 
-- [ ] Phase 1 – Conditional Thinking
-- [ ] Phase 2 – Looping & Patterns
-- [ ] Phase 3 – Recursion
-- [ ] Phase 4 – Arrays
-- [ ] Phase 5 – Strings
+- [x] Phase 1 – Conditional Thinking
+- [x] Phase 2 – Looping & Patterns
+- [x] Phase 3 – Recursion
+- [x] Phase 4 – Arrays
+- [x] Phase 5 – Strings
 - [ ] Phase 6 – Mixed Logical Challenges
 
 ## Learning Outcome

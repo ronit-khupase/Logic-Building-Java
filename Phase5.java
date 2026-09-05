@@ -261,4 +261,153 @@ public class Phase5 {
         System.out.println("Count : " + cnt);
 
     }
+
+    public void level3(){
+
+        System.out.println("1. Reverse string manually.");
+        String str = sc.nextLine();
+        char[] ch = str.toCharArray();
+        for ( int i = 0; i < ch.length/2; i++){
+            char temp = ch[i];
+            ch[i] = ch[ch.length-1-i];
+            ch[ch.length-1-i] = temp;
+        }
+        System.out.println("Reverse: "+ new String(ch));
+
+        System.out.println("2. Reverse each word in sentence.");
+        str = sc.nextLine();
+        String[] words = str.split("\\s+");
+
+        for(String word : words){
+            ch = word.toCharArray();
+            for ( int i = 0; i < ch.length/2; i++){
+                char temp = ch[i];
+                ch[i] = ch[ch.length-1-i];
+                ch[ch.length-1-i] = temp;
+            }
+            System.out.print(new String(ch)+ " ");
+        }
+        System.out.println();
+
+        System.out.println("3. Reverse words in sentence.");
+        str = sc.nextLine().toLowerCase();
+        words = str.split("\\s+");
+        for(int i = 0; i < words.length/2; i++){
+            String temp = words[i];
+            words[i] = words[words.length-1-i];
+            words[words.length-1-i] = temp;
+        }
+        str = String.join(" ", words);
+        System.out.println("String After Reversing words : "+str);
+
+        System.out.println("4. Palindrome string.");
+        str = sc.nextLine();
+        ch = str.toCharArray();
+
+        for ( int i = 0; i < ch.length/2; i++){
+            char temp = ch[i];
+            ch[i] = ch[ch.length-1-i];
+            ch[ch.length-1-i] = temp;
+        }
+        if (str.equals(new String(ch))){
+            System.out.println("Palindrome String");
+        }
+        else {
+            System.out.println("Not Palindrome");
+        }
+
+
+        System.out.println("5. Check if two strings are reverse of each other.");
+        String str1 = sc.nextLine();
+        String str2 = sc.nextLine();
+        ch = str1.toCharArray();
+
+        for ( int i = 0; i < ch.length/2; i++){
+            char temp = ch[i];
+            ch[i] = ch[ch.length-1-i];
+            ch[ch.length-1-i] = temp;
+        }
+        if(str2.equals(new String(ch))){
+            System.out.println("Strings are Reverse of each other");
+        }
+        else {
+            System.out.println("Strings are Not Reverse of each other");
+        }
+
+        System.out.println("6. Middle character(s) of string.");
+        str = sc.nextLine();
+        if(str.length()%2 == 0){
+            System.out.println("Middle Characters : " + str.charAt(str.length()/2 - 1)+" and "+ str.charAt(str.length()/2));
+        }
+        else {
+            System.out.println("Middle Character : " + str.charAt(str.length()/2));
+        }
+
+        System.out.println("7. Second half reverse of string.");
+        str = sc.nextLine();
+        ch = str.toCharArray();
+
+        int mid = ch.length/2;
+        int left = mid;
+        int right = ch.length - 1;
+
+        while(left < right){
+            char temp = ch[left];
+            ch[left] = ch[right];
+            ch[right] = temp;
+            left++;
+            right--;
+        }
+        System.out.println("After half reverse : "+new String(ch));
+
+
+        System.out.println("8. Remove first and last character.");
+        if(str.length() > 1){
+           str = str.substring(1, str.length()-1);
+        }
+        else {
+            str = "";
+        }
+
+        System.out.println("String after removing chars: " + str);
+
+
+        System.out.println("9. Reverse only characters keeping digits in place.");
+        str = sc.nextLine();
+        ch = str.toCharArray();
+        int i = 0;
+        int j = ch.length-1;
+        while (i < j) {
+            if (!Character.isLetter(ch[i])) {
+                i++;
+            } else if (!Character.isLetter(ch[j])) {
+                j--;
+            } else {
+                char temp = ch[i];
+                ch[i] = ch[j];
+                ch[j] = temp;
+                i++;
+                j--;
+            }
+        }
+
+        System.out.println(new String(ch));
+
+
+        System.out.println("10. Reverse but preserve spaces.");
+        str = sc.nextLine();
+        words = str.split(" ");
+
+        for(i = 0; i < words.length; i++){
+            ch = words[i].toCharArray();
+
+            for ( j = 0; j < ch.length/2; j++){
+                char temp = ch[j];
+                ch[j] = ch[ch.length-1-j];
+                ch[ch.length-1-j] = temp;
+            }
+            words[i] = new String(ch);
+        }
+        System.out.println(String.join(" ",words));
+    }
 }

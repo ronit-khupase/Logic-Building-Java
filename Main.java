@@ -29,6 +29,7 @@ void main() {
     Phase5 phase5 = new Phase5();
     phase5.level1();
     phase5.level2();
+    phase5.level3();
 }
 
 

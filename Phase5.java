@@ -410,4 +410,31 @@ public class Phase5 {
         }
         System.out.println(String.join(" ",words));
     }
+
+    public void level4(){
+//        1. Remove vowels.
+//        2. Remove spaces.
+//        3. Replace vowels with *.
+//        4. Replace spaces.
+//        5. Remove digits.
+//        6. Remove duplicate characters.
+//        7. Keep first occurrence only.
+//        8. Remove consecutive duplicates.
+//        9. Swap case.
+//        10. Shift characters by 1.
+    }
+
+    public void level5(){
+//        1. Print each word on new line.
+//        2. Count even-length words.
+//        3. Longest word.
+//        4. Shortest word.
+//        5. Swap first and last word.
+//        6. Words starting and ending with same letter.
+//        7. Count words containing 'a'.
+//        8. Capitalize first letter.
+//        9. Title case sentence.
+//        10. Normalize spaces.
+
+    }
 }

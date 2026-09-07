@@ -412,7 +412,7 @@ public class Phase5 {
     }
 
     public void level4(){
-//        1. Remove vowels.
+        System.out.println("1. Remove vowels.");
 //        2. Remove spaces.
 //        3. Replace vowels with *.
 //        4. Replace spaces.

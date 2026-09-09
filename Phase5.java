@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Phase5 {
     Scanner sc = new Scanner(System.in);
@@ -413,16 +413,99 @@ public class Phase5 {
 
     public void level4(){
         System.out.println("1. Remove vowels.");
+        String str = sc.nextLine();
+        str = str.replaceAll("[AEIOUaeiou]","");
+        System.out.println("String after replace : "+ str);
+
         System.out.println("2. Remove spaces.");
-//
-//        3. Replace vowels with *.
-//        4. Replace spaces.
-//        5. Remove digits.
-//        6. Remove duplicate characters.
-//        7. Keep first occurrence only.
-//        8. Remove consecutive duplicates.
-//        9. Swap case.
-//        10. Shift characters by 1.
+        str = str.replaceAll("\\s","");
+        System.out.println("String after removing spaces: "+ str);
+
+        System.out.println("3. Replace vowels with *.");
+        str = sc.nextLine();
+        str = str.replaceAll("[AEIOUaeiou]","*");
+        System.out.println("String after replace : "+ str);
+
+
+        System.out.println(" 4. Replace spaces with _.");
+        str = sc.nextLine();
+        str = str.replaceAll("\\s","_");
+        System.out.println("String after replace : "+ str);
+
+        System.out.println("5. Remove digits from string.");
+        str = sc.nextLine();
+        str = str.replaceAll("[0-9]","");
+        System.out.println("String after replace : "+ str);
+
+        System.out.println("6. Remove duplicate characters.");
+        str = sc.nextLine();
+        StringBuilder sb = new StringBuilder();
+
+        for(char ch : str.toCharArray()){
+            ch = Character.toLowerCase(ch);
+            if (str.indexOf(ch) == str.lastIndexOf(ch)) {
+                sb.append(ch);
+            }
+        }
+        System.out.println("String after removing duplicates: " + sb);
+
+        System.out.println("7. Keep first occurrence only.");
+        str = sc.nextLine();
+
+        Set<Character> set = new HashSet<>();
+        StringBuilder strb = new StringBuilder();
+
+        for (char ch : str.toCharArray()) {
+            if (set.add(ch)) {
+                strb.append(ch);
+            }
+        }
+
+        System.out.println("String after removing duplicates: " + strb);
+
+
+        System.out.println("8. Remove consecutive duplicates.");
+        str = sc.nextLine();
+        Stack<Character> st = new Stack<>();
+        for (char ch : str.toCharArray()) {
+            if (st.isEmpty() || st.peek() != ch) {
+                st.push(ch);
+            } else {
+                st.pop();
+            }
+        }
+
+        StringBuilder bt = new StringBuilder();
+        for (char ch : st) {
+            bt.append(ch);
+        }
+        System.out.println("String After Removing Consecutive duplicates: "+ bt);
+
+
+        System.out.println("9. Swap case.");
+        str = sc.nextLine();
+        StringBuilder s = new StringBuilder();
+        for(char ch : str.toCharArray()){
+            if(Character.isLetter(ch)){
+                if(Character.isUpperCase(ch)){
+                    ch = Character.toLowerCase(ch);
+                    s.append(ch);
+                }
+                else {
+                    ch = Character.toUpperCase(ch);
+                    s.append(ch);
+                }
+            }
+        }
+        System.out.println("String After Swapping : "+ s);
+
+        System.out.println("10. Shift characters by 1 eg 'abc' -> 'bcd'.");
+        str = sc.nextLine();
+        StringBuilder b = new StringBuilder();
+        for(char ch : str.toCharArray()){
+            b.append(++ch);
+        }
+        System.out.println("String after shift : " + b);
     }
 
     public void level5(){

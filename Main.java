@@ -31,6 +31,7 @@ void main() {
     phase5.level2();
     phase5.level3();
     phase5.level4();
+    phase5.level5();
 }
 
 

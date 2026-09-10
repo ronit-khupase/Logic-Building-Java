@@ -509,16 +509,81 @@ public class Phase5 {
     }
 
     public void level5(){
-//        1. Print each word on new line.
-//        2. Count even-length words.
-//        3. Longest word.
-//        4. Shortest word.
-//        5. Swap first and last word.
-//        6. Words starting and ending with same letter.
-//        7. Count words containing 'a'.
-//        8. Capitalize first letter.
-//        9. Title case sentence.
-//        10. Normalize spaces.
+
+        System.out.println("1. Print each word on new line.");
+        String str = sc.nextLine();
+        str = str.replaceAll("\\s+","\n");
+        System.out.println("Each word on new line:\n"+str);
+
+        System.out.println("2. Count even-length words.");
+        str = sc.nextLine();
+        String[] words = str.split("\\s+");
+        int cnt = 0;
+        for(String word : words){
+            if(word.length()%2 == 0){
+                cnt++;
+            }
+        }
+        System.out.println("Even Length Words are: "+cnt);
+
+        System.out.println("3. Longest word.");
+        String longest = "";
+        for(String word : words){
+            if(longest.length() < word.length()){
+                longest = word;
+            }
+        }
+        System.out.println("Longest Word is : "+longest);
+
+        System.out.println("4. Shortest word.");
+        String shortest = words[0];
+        for (int i = 1; i < words.length; i++) {
+            if(shortest.length() > words[i].length()){
+                shortest = words[i];
+            }
+        }
+        System.out.println("Shortest Word is : "+ shortest);
+
+        System.out.println("5. Swap first and last word.");
+        String temp = words[0];
+        words[0] = words[words.length-1];
+        words[words.length-1] = temp;
+        System.out.println("String after swap : "+ Arrays.toString(words));
+
+        System.out.println("6. Words starting and ending with same letter.");
+        for(String word : words){
+            if(Character.toLowerCase(word.charAt(0)) == Character.toLowerCase(word.charAt(word.length()-1))){
+                System.out.print(word+" ");
+            }
+        }
+        System.out.println();
+
+        System.out.println(" 7. Count words containing 'a'.");
+        for(String word : words){
+            if(word.toLowerCase().contains("a")){
+                System.out.print(word+" ");
+            }
+        }
+        System.out.println();
+
+        System.out.println("8. Capitalize first letter.");
+        for (int i = 0; i < words.length; i++) {
+            words[i] = words[i].substring(0,1).toUpperCase() + words[i].substring(1);
+        }
+        System.out.println("String after first letter capitalization : "+ String.join(" ",words));
+
+        System.out.println("9. Title case sentence.");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words){
+            sb.append(Character.toUpperCase(word.charAt(0)))
+                    .append(word.substring(1).toLowerCase())
+                    .append(" ");
+        }
+        System.out.println("Sentence in title case : " + sb.toString().trim());
+
+        System.out.println("10. Normalize spaces.");
+        str = sc.nextLine();
+        System.out.println("After space normalization : "+ str.trim().replaceAll("\\s+"," "));
 
     }
 }

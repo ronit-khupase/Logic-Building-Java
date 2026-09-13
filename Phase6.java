@@ -118,6 +118,16 @@ public class Phase6 {
     }
 
     public void level2(){
+//        1. Anagram check.
+//        2. Count vowels in each word.
+//        3. Reverse even-length words.
+//        4. Replace vowels with positions a=1, e=2, i=3.
+//        5. Print repeated characters.
+//        6. Words starting and ending with same letter.
+//        7. Alternate word case.
+//        8. String rotation check.
+//        9. Word with maximum vowels.
+//        10. Remove duplicate words.
 
     }
 }

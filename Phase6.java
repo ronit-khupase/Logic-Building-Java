@@ -116,4 +116,8 @@ public class Phase6 {
         }
         return true;
     }
+
+    public void level2(){
+
+    }
 }

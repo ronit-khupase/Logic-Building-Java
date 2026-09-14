@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Phase6 {
@@ -118,11 +119,52 @@ public class Phase6 {
     }
 
     public void level2(){
+
 //        1. Anagram check.
-//        2. Count vowels in each word.
-//        3. Reverse even-length words.
-//        4. Replace vowels with positions a=1, e=2, i=3.
-//        5. Print repeated characters.
+
+        System.out.println("2. Count vowels in each word.");
+        String str = sc.nextLine();
+        String[] words = str.split("\\s+");
+        for(String word : words){
+            int cnt = 0;
+            for(int i = 0; i < word.length(); i++){
+                if(word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'i' || word.charAt(i) == 'o' || word.charAt(i) == 'u'){
+                    cnt++;
+                }
+            }
+            System.out.println("Vowel Count in : "+word +" is "+cnt);
+        }
+
+        System.out.println("3. Reverse even-length words.");
+        for(int i = 0; i < words.length; i++){
+            if(words[i].length()%2 ==0){
+                StringBuilder sb = new StringBuilder(words[i]);
+                words[i] = String.valueOf(sb.reverse());
+            }
+        }
+        str = String.join(" ",words);
+        System.out.println("String After Reversing Even Words: "+str);
+
+        System.out.println("4. Replace vowels with positions a=1, e=2, i=3.");
+        str = sc.nextLine();
+        words = str.split("\\s+");
+        for(int i = 0; i < words.length; i++){
+            char[] ch = words[i].toCharArray();
+            for(int j = 0; j < ch.length; j++){
+                switch (Character.toLowerCase(ch[j])){
+                    case 'a' : ch[j] = '1'; break;
+                    case 'e' : ch[j] = '2'; break;
+                    case 'i' : ch[j] = '3'; break;
+                    case 'o' : ch[j] = '4'; break;
+                    case 'u' : ch[j] = '5'; break;
+                }
+            }
+            words[i] = new String(ch);
+        }
+        System.out.println("String After Changing Vowels :"+ String.join(" ", words));
+
+        System.out.println("5. Print repeated characters.");
+//
 //        6. Words starting and ending with same letter.
 //        7. Alternate word case.
 //        8. String rotation check.

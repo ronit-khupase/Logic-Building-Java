@@ -1,4 +1,7 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
 
 public class Phase6 {
@@ -120,7 +123,19 @@ public class Phase6 {
 
     public void level2(){
 
-//        1. Anagram check.
+        System.out.println("1. Anagram check.");
+        String s1 = sc.nextLine();
+        String s2 = sc.nextLine();
+        char[] ch1 = s1.toCharArray();
+        char[] ch2 = s2.toCharArray();
+        Arrays.sort(ch1);
+        Arrays.sort(ch2);
+        if(Arrays.equals(ch1,ch2)){
+            System.out.println("Anagram");
+        }else {
+            System.out.println("Not Anagram");
+        }
+
 
         System.out.println("2. Count vowels in each word.");
         String str = sc.nextLine();
@@ -164,12 +179,98 @@ public class Phase6 {
         System.out.println("String After Changing Vowels :"+ String.join(" ", words));
 
         System.out.println("5. Print repeated characters.");
-//
-//        6. Words starting and ending with same letter.
-//        7. Alternate word case.
-//        8. String rotation check.
-//        9. Word with maximum vowels.
-//        10. Remove duplicate words.
+        String s = sc.nextLine();
 
+        for(int i = 0; i < s.length(); i++) {
+
+            boolean alreadyPrinted = false;
+
+            for(int k = 0; k < i; k++) {
+                if(Character.toLowerCase(s.charAt(i)) ==
+                        Character.toLowerCase(s.charAt(k))) {
+                    alreadyPrinted = true;
+                    break;
+                }
+            }
+
+            if(alreadyPrinted) continue;
+
+            for(int j = i + 1; j < s.length(); j++) {
+                if(Character.toLowerCase(s.charAt(i)) ==
+                        Character.toLowerCase(s.charAt(j))) {
+                    System.out.println(s.charAt(i));
+                    break;
+                }
+            }
+        }
+
+        System.out.println("6. Words starting and ending with same letter.");
+        s = sc.nextLine();
+        words = s.split("\\s+");
+        for(String word : words){
+            if(Character.toLowerCase(word.charAt(0)) == Character.toLowerCase(word.charAt(word.length()-1))){
+                System.out.println(word+" ");
+            }
+        }
+
+        System.out.println("7. Alternate word case.");
+        for(int i = 0; i < words.length; i++){
+            if((i+1) %2 == 0){
+                System.out.print(words[i].toLowerCase()+" ");
+            }
+            else {
+                System.out.print(words[i].toUpperCase()+" ");
+            }
+        }
+
+        System.out.println("8. String rotation check.");
+
+        String str1 = sc.nextLine().trim().toLowerCase();
+        String str2 = sc.nextLine().trim().toLowerCase();
+
+        if(str1.length() == str2.length() &&
+                (str1 + str1).contains(str2)){
+            System.out.println("Rotation");
+        }else{
+            System.out.println("Not Rotation");
+        }
+
+        System.out.println("9. Word with maximum vowels.");
+        String string = sc.nextLine();
+
+        words = string.split("\\s+");
+
+        String maxWord = "";
+        int maxVowels = 0;
+
+        for(String word : words){
+            int count = 0;
+
+            for(char ch : word.toLowerCase().toCharArray()){
+                if("aeiou".indexOf(ch) != -1){
+                    count++;
+                }
+            }
+
+            if(count > maxVowels){
+                maxVowels = count;
+                maxWord = word;
+            }
+        }
+
+        System.out.println("Word: " + maxWord);
+        System.out.println("Vowels: " + maxVowels);
+
+
+        System.out.println("10. Remove duplicate words.");
+        string = sc.nextLine();
+
+        words = string.split("\\s+");
+
+        LinkedHashSet<String> set = new LinkedHashSet<>(Arrays.asList(words));
+
+        for(String word : set){
+            System.out.print(word + " ");
+        }
     }
 }

@@ -273,4 +273,8 @@ public class Phase6 {
             System.out.print(word + " ");
         }
     }
+
+    public void level4(){
+
+    }
 }

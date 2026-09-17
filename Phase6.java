@@ -1,5 +1,3 @@
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
@@ -274,7 +272,82 @@ public class Phase6 {
         }
     }
 
-    public void level4(){
+    public void level3(){
 
+        System.out.println("5. Move all zeros to end.");
+        System.out.println("Enter Number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i =0; i < n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        int zeroIdx = 0;
+        for(int i = 0; i < n; i++){
+            if(arr[i] != 0){
+                arr[zeroIdx++] = arr[i];
+            }
+        }
+
+        while (zeroIdx < arr.length){
+            arr[zeroIdx++] = 0;
+        }
+        System.out.println("Array After Shifting zeros to End: "+ Arrays.toString(arr));
+
+        System.out.println(" 7. Merge arrays.");
+        System.out.println("Enter Number of elements: ");
+        n = sc.nextInt();
+        int[] arr1 = new int[n];
+        int[] arr2 = new int[n];
+        int[] merged = new int[arr1.length + arr2.length];
+
+        for(int i =0; i < n; i++){
+            arr1[i] = sc.nextInt();
+        }
+        for(int i =0; i < n; i++){
+            arr2[i] = sc.nextInt();
+        }
+        for (int i = 0; i < arr1.length; i++){
+            merged[i] = arr1[i];
+        }
+        for (int i = 0; i < arr2.length; i++){
+            merged[arr1.length+i] = arr2[i];
+        }
+
+        System.out.println("Merged Array : "+ Arrays.toString(merged));
+
+        System.out.println("9. Right rotate by one.");
+        System.out.println("Enter Number of elements: ");
+        n = sc.nextInt();
+        for(int i =0; i < n; i++){
+            arr[i] = sc.nextInt();
+        }
+        int last = arr[arr.length - 1];
+        for (int i = arr.length - 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[0] = last;
+        System.out.println("Array After Rotation : "+ Arrays.toString(arr));
+
+    }
+
+    public void level4(){
+//        2. Array pairs with given sum.
+//        3. All subarrays.
+//        4. Check sorted array ASC or DESC.
+//        5. Consecutive occurrence count.
+//        6. Matching character pairs.
+//        7. Character pattern (A, AB, ABC...).
+//        8. Pascal Triangle Upto n Rows.
+//        10. Spiral number pattern.
+
+    }
+
+    public void level5(){
+//        3. Password validation.
+//        5. Coin toss simulation using Random, count heads and tails.
+//        6. Digit frequency.
+//        7. Common elements between arrays.
+//        8. Common characters between strings.
     }
 }

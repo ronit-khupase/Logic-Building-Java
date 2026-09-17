@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
@@ -332,14 +333,184 @@ public class Phase6 {
     }
 
     public void level4(){
-//        2. Array pairs with given sum.
-//        3. All subarrays.
-//        4. Check sorted array ASC or DESC.
-//        5. Consecutive occurrence count.
-//        6. Matching character pairs.
-//        7. Character pattern (A, AB, ABC...).
-//        8. Pascal Triangle Upto n Rows.
-//        10. Spiral number pattern.
+        System.out.println("2. Array pairs with given sum.");
+        System.out.println("Enter Number of Elements: ");
+        int n = sc.nextInt();
+        System.out.println("Enter Array Elements :");
+        int[] arr5 = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr5[i] = sc.nextInt();
+        }
+        System.out.println("Enter Target Sum : ");
+        int sum = sc.nextInt();
+        HashSet<Integer> set = new HashSet<>();
+
+        for(int i = 0; i < n; i++){
+            int target = sum - arr5[i];
+            if(set.contains(target)){
+                System.out.println(arr5[i]+" "+target+" ");
+            }
+            set.add(arr5[i]);
+        }
+
+        System.out.println("3. All subarrays.");
+        arr5 = new int[3];
+        System.out.println("Enter 3 Elements in Array: ");
+        for (int i = 0; i < 3; i++) {
+            arr5[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = i; j < 3; j++) {
+                for (int k = i; k <= j; k++) {
+                    System.out.print(arr5[k] + " ");
+                }
+                System.out.println();
+            }
+        }
+
+
+        System.out.println("4. Check sorted array ASC or DESC.");
+
+        System.out.println("Enter Number of Elements:");
+        int num6 = sc.nextInt();
+
+        int[] array = new int[num6];
+
+        System.out.println("Enter Array Elements:");
+        for (int i = 0; i < num6; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        boolean asc = true;
+        boolean desc = true;
+
+        for (int i = 0; i < num6 - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                asc = false;
+            }
+            if (array[i] < array[i + 1]) {
+                desc = false;
+            }
+        }
+
+        if (asc) {
+            System.out.println("Ascending Sorted");
+        } else if (desc) {
+            System.out.println("Descending Sorted");
+        } else {
+            System.out.println("Not Sorted");
+        }
+
+        System.out.println("5. Consecutive occurrence count.");
+        System.out.println("Enter Number of Elements:");
+        num6 = sc.nextInt();
+        int[] a = new int[num6];
+
+        System.out.println("Enter Array Elements:");
+        for (int i = 0; i < num6; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int count = 1;
+
+        for (int i = 1; i < num6; i++) {
+            if (a[i] == a[i - 1]) {
+                count++;
+            } else {
+                System.out.println(a[i - 1] + " -> " + count);
+                count = 1;
+            }
+        }
+        System.out.println(a[num6 - 1] + " -> " + count);
+
+
+        System.out.println("6. Matching character pairs.");
+
+        System.out.println("Enter String:");
+        String str = sc.nextLine();
+
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i + 1; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    System.out.println(str.charAt(i) + " - " + str.charAt(j));
+                }
+            }
+        }
+
+        System.out.println("7. Character pattern (A, AB, ABC...).");
+        int number = sc.nextInt();
+
+        for(int i = 1; i <= number; i++){
+            char ch = 'A';
+            for(int j = 1; j <= i; j++){
+                System.out.print(ch++);
+            }
+            System.out.println();
+        }
+
+        System.out.println("8. Pascal Triangle Upto n Rows.");
+        System.out.println("Enter n :");
+        int num1 = sc.nextInt();
+        for (int i = 0; i < num1; i++) {
+
+            for (int s = 0; s < num1 - i - 1; s++) {
+                System.out.print(" ");
+            }
+
+            int num5 = 1;
+
+            for (int j = 0; j <= i; j++) {
+                System.out.print(num5 + " ");
+                num5 = num5 * (i - j) / (j + 1);
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("10. Spiral number pattern.");
+        System.out.print("Enter n: ");
+        int n1 = sc.nextInt();
+
+        int[][] arr = new int[n1][n1];
+
+        int top = 0, bottom = n1 - 1;
+        int left = 0, right = n1 - 1;
+        int num = 1;
+
+        while (top <= bottom && left <= right) {
+
+            for (int i = left; i <= right; i++) {
+                arr[top][i] = num++;
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                arr[i][right] = num++;
+            }
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    arr[bottom][i] = num++;
+                }
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    arr[i][left] = num++;
+                }
+                left++;
+            }
+        }
+
+        for (int i = 0; i < n1; i++) {
+            for (int j = 0; j < n1; j++) {
+                System.out.printf("%-4d", arr[i][j]);
+            }
+            System.out.println();
+        }
 
     }
 

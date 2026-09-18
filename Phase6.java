@@ -2,9 +2,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Phase6 {
     Scanner sc = new Scanner(System.in);
+    Random random = new Random();
 
     public void level1(){
         System.out.println("1. Numbers divisible by both 3 and 5.");
@@ -515,10 +517,45 @@ public class Phase6 {
     }
 
     public void level5(){
-//        3. Password validation.
-//        5. Coin toss simulation using Random, count heads and tails.
-//        6. Digit frequency.
-//        7. Common elements between arrays.
-//        8. Common characters between strings.
+
+        System.out.println("3. Password validation.");
+        System.out.println("Enter Password: ");
+        String pass = sc.nextLine();
+        if(pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$")){
+            System.out.println("Valid Password!");
+        }else {
+            System.out.println("Invalid Password!");
+        }
+
+        System.out.println("5. Coin toss simulation using Random, count heads and tails.");
+        System.out.println("How many times want to toss?");
+        int times = sc.nextInt();
+        int headscnt = 0, tailscnt = 0;
+        while(times>0){
+            if(random.nextBoolean()){
+                System.out.println("It's Head!");
+                headscnt++;
+            }else {
+                System.out.println("It's Tails!");
+                tailscnt++;
+            }
+            times--;
+        }
+        System.out.println("Heads Count : "+headscnt+" Tails Count : "+tailscnt);
+
+
+        System.out.println("6. Digit frequency.");
+        long num = sc.nextLong();
+        int[] freq = new int[10];
+        while (num > 0) {
+            int digit = (int)(num % 10);
+            freq[digit]++;
+            num /= 10;
+        }
+        for (int i = 0; i < 10; i++) {
+            if (freq[i] > 0) {
+                System.out.println(i + " -> " + freq[i]);
+            }
+        }
     }
 }

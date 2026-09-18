@@ -97,7 +97,7 @@ This repository serves as:
 - [x] Phase 3 – Recursion
 - [x] Phase 4 – Arrays
 - [x] Phase 5 – Strings
-- [ ] Phase 6 – Mixed Logical Challenges
+- [x] Phase 6 – Mixed Logical Challenges
 
 ## Learning Outcome
 
